@@ -35,6 +35,14 @@ module.exports = {
     overlay: {
       warnings: false,
       errors: true
+    },
+    // 配置反向代理
+    proxy: {
+      // 当地址中有/api时触发
+      '/api': {
+        target: 'http://ihrm.itheima.net/',
+        changeOrigin: true // 是否跨域
+      }
     }
     // before: require('./mock/mock-server.js')
   },
