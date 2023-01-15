@@ -1,18 +1,19 @@
 <template>
-  <div class="dashboard-container">
-    <div class="dashboard-text">name: {{ name }}</div>
+  <div clss="dashboard">
+    <div class="dashboard-container">
+      <ImageUpload />
+      <div class="dashboard-text">name: {{ name }}</div>
+    </div>
   </div>
+
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-
 export default {
   name: 'Dashboard',
   computed: {
-    ...mapGetters([
-      'name'
-    ])
+    ...mapGetters(['name'])
   }
 }
 </script>

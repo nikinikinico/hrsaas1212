@@ -2,7 +2,7 @@
 import Layout from '@/layout'
 export default {
   path: '/attendances',
-  // name: 'attendances', // 后面会在做权限的时候用到
+  name: 'attendances', // 后面会在做权限的时候用到
   component: Layout,
   children: [{
     path: '', // 这里什么都不写表示二级路由的默认路由

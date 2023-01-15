@@ -1,5 +1,5 @@
 import Vue from 'vue'
-
+import Compnent from '@/components'
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
 import ElementUI from 'element-ui'
@@ -16,9 +16,16 @@ import '@/icons' // icon
 import '@/permission' // permission control
 
 import * as directives from '@/directives'
+import * as filters from '@/filters' // 全局注册过滤器
+
+import CheckPermission from './mixin/checkPermission'
 Object.keys(directives).forEach(key => {
   Vue.directive(key, directives[key]) // 注册自定义指令
 })
+
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+}) // 全局注册过滤器
 
 /**
  * If you don't want to use mock-server
@@ -37,7 +44,10 @@ Object.keys(directives).forEach(key => {
 Vue.use(ElementUI, { locale })
 // 如果想要中文版 element-ui，按如下方式声明
 // Vue.use(ElementUI)
+Vue.use(Compnent)
 
+// 全局混入检查对象
+Vue.mixin(CheckPermission)
 Vue.config.productionTip = false
 
 new Vue({
