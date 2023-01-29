@@ -1,16 +1,37 @@
 
 import Layout from '@/layout'
-export default {
+
+const attendRouter = {
   path: '/attendances',
-  name: 'attendances', // 后面会在做权限的时候用到
   component: Layout,
-  children: [{
-    path: '', // 这里什么都不写表示二级路由的默认路由
-    component: () => import('@/views/attendances'),
-    // 路由的元信息
-    meta: {
-      title: '考勤', // 这里用title因为左侧导航读取了这里的title属性
-      icon: 'skill'
+  name: 'attendances',
+  children: [
+    {
+      path: '',
+      component: () => import('@/views/attendances'),
+      name: 'attendances',
+      meta: {
+        title: '考勤',
+        icon: 'excel' }
+    },
+    {
+      path: 'archiving',
+      component: () => import('@/views/attendances/historical'),
+      name: 'archiving',
+      hidden: true,
+      meta: {
+        title: '归档'
+      }
+    },
+    {
+      path: 'report/:month',
+      component: () => import('@/views/attendances/report'),
+      name: 'reports',
+      hidden: true,
+      meta: {
+        title: '报表'
+      }
     }
-  }]
+  ]
 }
+export default attendRouter

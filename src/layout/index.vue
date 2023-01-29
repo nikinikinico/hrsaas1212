@@ -1,14 +1,12 @@
 <template>
   <div :class="classObj" class="app-wrapper">
-    <div
-      v-if="device === 'mobile' && sidebar.opened"
-      class="drawer-bg"
-      @click="handleClickOutside"
-    />
+    <div v-if="device === 'mobile' && sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <div :class="{ 'fixed-header': fixedHeader }">
         <navbar />
+        <!-- 放置tagsView -->
+        <tags-view />
       </div>
       <app-main />
     </div>
@@ -28,16 +26,16 @@ export default {
   },
   mixins: [ResizeMixin],
   computed: {
-    sidebar () {
+    sidebar() {
       return this.$store.state.app.sidebar
     },
-    device () {
+    device() {
       return this.$store.state.app.device
     },
-    fixedHeader () {
+    fixedHeader() {
       return this.$store.state.settings.fixedHeader
     },
-    classObj () {
+    classObj() {
       return {
         hideSidebar: !this.sidebar.opened,
         openSidebar: this.sidebar.opened,
@@ -47,7 +45,7 @@ export default {
     }
   },
   methods: {
-    handleClickOutside () {
+    handleClickOutside() {
       this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
     }
   }

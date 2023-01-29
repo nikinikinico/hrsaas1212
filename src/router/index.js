@@ -39,6 +39,7 @@ import attendancesRouter from './modules/attendances'
 import salarysRouter from './modules/salarys'
 import settingRouter from './modules/setting'
 import socialRouter from './modules/social'
+import userRouter from './modules/user'
 
 // 动态路由
 export const asyncRoutes = [
@@ -70,7 +71,7 @@ export const constantRoutes = [
     redirect: '/dashboard',
     children: [{
       path: 'dashboard',
-      name: 'Dashboard',
+      name: 'dashboard',
       component: () => import('@/views/dashboard/index'),
       meta: { title: '首页', icon: 'dashboard' }
     }]
@@ -83,7 +84,8 @@ export const constantRoutes = [
       path: '',
       component: () => import('@/views/import')
     }]
-  }
+  },
+  userRouter // 放置一个都可以访问的路由
 
 ]
 
